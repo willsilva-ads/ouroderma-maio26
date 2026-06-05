@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OuroDerma - Relatório de Performance - Maio 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #03060f;
+            --bg-card: rgba(10, 15, 30, 0.55);
+            --bg-card-hover: rgba(16, 24, 48, 0.7);
+            --border-card: rgba(255, 255, 255, 0.05);
+            --accent: #7c3aed; /* Howli Agency Purple Accent */
+            --accent-glow: rgba(124, 58, 237, 0.15);
+            --accent-rgb: 124, 58, 237;
+            --meta-color: #1877F2;
+            --google-color: #34a853;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --table-header: rgba(255, 255, 255, 0.02);
+            --table-row-hover: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* App Layout Grid */
+        .app-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #050813;
+            border-right: 1px solid var(--border-card);
+            padding: 2.5rem 1.25rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #b39ddb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            outline: none;
+            padding: 0.25rem;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: grab;
+            border: 1px solid transparent;
+        }
+        
+        .nav-item:active {
+            cursor: grabbing;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.75rem 0.85rem;
+            width: 100%;
+            font-size: 0.925rem;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .nav-item.active a, .nav-item a:hover {
+            color: #fff;
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 3px solid var(--accent);
+            padding-left: calc(0.85rem - 3px);
+        }
+
+        .nav-item.drag-over {
+            border: 1px dashed var(--accent);
+            background: rgba(124, 58, 237, 0.04);
+        }
+
+        .footer-branding {
+            border-top: 1px solid var(--border-card);
+            padding-top: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .footer-branding strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .fullscreen-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            color: #b39ddb;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding: 3rem;
+            background-color: var(--bg-main);
+            background-image: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.05) 0%, transparent 60%);
+        }
+
+        /* Cover Section styling */
+        .cover-section {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cover-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .cover-left h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            color: #b39ddb;
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .cover-right {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-art {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(5,8,19,0.9) 0%, rgba(124, 58, 237, 0.05) 100%);
+            border: 2px solid rgba(124, 58, 237, 0.2);
+            position: relative;
+            box-shadow: 0 0 50px rgba(124, 58, 237, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cover-art::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            border: 1px dashed rgba(124, 58, 237, 0.3);
+            animation: rotateClockwise 20s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes rotateClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Dashboard Header */
+        .dash-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-card);
+            padding-bottom: 1.5rem;
+        }
+
+        .dash-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #b39ddb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            outline: none;
+        }
+
+        .dash-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+            outline: none;
+        }
+
+        /* Section Layouts */
+        .section-block {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .section-block.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(124, 58, 237, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            outline: none;
+        }
+
+        .card-title-icon {
+            width: 8px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* KPI Grids */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-grad, var(--accent));
+        }
+
+        .kpi-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .kpi-label {
+            font-size: 0.725rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .kpi-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            outline: none;
+        }
+
+        .kpi-subtext {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            outline: none;
+        }
+
+        /* Strategy blocks */
+        .strategy-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .strategy-block {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .strategy-block h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #b39ddb;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .strategy-block p {
+            outline: none;
+            color: var(--text-muted);
+            font-size: 0.925rem;
+        }
+
+        /* Final Presentation Section Styling */
+        .final-presentation-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 85vh;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .thank-you-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            outline: none;
+        }
+
+        .final-branding-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        /* Signature block layout */
+        .closing-footer-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .closing-divider {
+            width: 1px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .footer-logo-mike {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 2px;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo-area">
+                <img src="logo-howli.png" class="logo-img" alt="Howli Logo">
+                <div class="logo-text" contenteditable="true">HOWLI</div>
+            </div>
+            
+            <nav>
+                <ul class="nav-list" id="sidebarNavList">
+                    <li class="nav-item active" data-target="cover" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#cover"><span contenteditable="true">Capa do Relatório</span></a></li>
+                    <li class="nav-item" data-target="trafego-site" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#trafego-site"><span contenteditable="true">Tráfego Site</span></a></li>
+                    <li class="nav-item" data-target="fitocomposto" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#fitocomposto"><span contenteditable="true">Fitocomposto Calmante</span></a></li>
+                    <li class="nav-item" data-target="emagrecedor" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#emagrecedor"><span contenteditable="true">Emagrecedor Plus</span></a></li>
+                    <li class="nav-item" data-target="skincare" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#skincare"><span contenteditable="true">Linha de Skincare</span></a></li>
+                    <li class="nav-item" data-target="vitamina-c" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#vitamina-c"><span contenteditable="true">Pérolas Vitamina C</span></a></li>
+                    <li class="nav-item" data-target="resultado-geral" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#resultado-geral"><span contenteditable="true">Resultado Geral</span></a></li>
+                    <li class="nav-item" data-target="proximos-passos" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#proximos-passos"><span contenteditable="true">Próximos Passos</span></a></li>
+                    <li class="nav-item" data-target="agradecimento" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#agradecimento"><span contenteditable="true">Agradecimento</span></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            <!-- Fullscreen presentation trigger button -->
+            <button class="fullscreen-btn" onclick="toggleFullScreen()">
+                <span>📺 Tela Cheia</span>
+            </button>
+            
+            <div class="footer-branding">
+                <strong contenteditable="true">Maio 2026</strong>
+                <span contenteditable="true">Performance Dashboard</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- COVER SECTION -->
+        <section id="cover" class="section-block active">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
+                <div class="cover-badge" contenteditable="true">🏆 Dashboard de Performance</div>
+            </div>
+            
+            <div class="cover-content" style="margin-top: 4rem;">
+                <div class="cover-left">
+                    <h1 contenteditable="true">Relatório de Tráfego Pago</h1>
+                    <p style="font-size: 2.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-weight: 700;" contenteditable="true">OuroDerma</p>
+                    <p style="font-size: 1.15rem; color: var(--text-muted); font-weight: 300; margin-bottom: 4rem;" contenteditable="true">Análise estratégica de tráfego pago e conversão e-commerce no período de Maio de 2026.</p>
+                    
+                    <!-- Cover Signature Block -->
+                    <div class="closing-footer-layout" style="justify-content: flex-start; margin-top: 2rem;">
+                        <img src="logo-howli.png" style="height: 35px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.3));" alt="Howli Logo">
+                        <div class="footer-logo-mike" style="margin-left: -0.5rem;" contenteditable="true">HOWLI</div>
+                        <div class="closing-divider"></div>
+                        <div style="text-align: left; font-size: 0.8rem; color: var(--text-muted);">
+                            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;" contenteditable="true">OURODERMA</strong>
+                            <span contenteditable="true">Gestão de Mídia & Analytics | Maio 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cover-right">
+                    <div class="cover-art" style="display: flex; justify-content: center; align-items: center;">
+                        <img src="logo-howli.png" style="width: 140px; height: 140px; object-fit: contain; filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.4));" alt="Howli Logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRÁFEGO SITE SECTION -->
+        <section id="trafego-site" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Campanha [TRÁFEGO SITE]</h2>
+                    <p contenteditable="true">Resultados da campanha focada em atração de visitantes qualificados</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Impressões</div>
+                    <div class="kpi-value" contenteditable="true">23.181</div>
+                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
+                    <div class="kpi-value" contenteditable="true">17.741</div>
+                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Visitas ao Site</div>
+                    <div class="kpi-value" contenteditable="true">302</div>
+                    <div class="kpi-subtext" contenteditable="true">Cliques que geraram visualização de página</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Custo por Visita</div>
+                    <div class="kpi-value" contenteditable="true">R$ 0,47</div>
+                    <div class="kpi-subtext" contenteditable="true">Custo médio por visita gerada</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Investimento</div>
+                    <div class="kpi-value" contenteditable="true">R$ 143,42</div>
+                    <div class="kpi-subtext" contenteditable="true">Investimento total na campanha</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FITOCOMPOSTO SECTION -->
+        <section id="fitocomposto" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Campanha [FITOCOMPOSTO CALMANTE]</h2>
+                    <p contenteditable="true">Performance do produto Fitocomposto Calmante no período</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Impressões</div>
+                    <div class="kpi-value" contenteditable="true">2.894</div>
+                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
+                    <div class="kpi-value" contenteditable="true">2.185</div>
+                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Vendas</div>
+                    <div class="kpi-value" contenteditable="true">3</div>
+                    <div class="kpi-subtext" contenteditable="true">Quantidade de compras realizadas</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
+                    <div class="kpi-value" contenteditable="true">R$ 48,41</div>
+                    <div class="kpi-subtext" contenteditable="true">Custo de anúncio por venda</div>
+                </div>
+                <div class="kpi-card" style="--accent: #2e7d32">
+                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
+                    <div class="kpi-value" contenteditable="true">1.70</div>
+                    <div class="kpi-subtext" contenteditable="true">Retorno de faturamento / investimento</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Receita</div>
+                    <div class="kpi-value" contenteditable="true">R$ 246,64</div>
+                    <div class="kpi-subtext" contenteditable="true">Faturamento gerado pela conversão</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Investimento</div>
+                    <div class="kpi-value" contenteditable="true">R$ 145,24</div>
+                    <div class="kpi-subtext" contenteditable="true">Investimento total no produto</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EMAGRECEDOR SECTION -->
+        <section id="emagrecedor" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Campanha [EMAGRECEDOR PLUS]</h2>
+                    <p contenteditable="true">Performance do produto Emagrecedor Plus no período</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Impressões</div>
+                    <div class="kpi-value" contenteditable="true">3.041</div>
+                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
+                    <div class="kpi-value" contenteditable="true">2.127</div>
+                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Vendas</div>
+                    <div class="kpi-value" contenteditable="true">1</div>
+                    <div class="kpi-subtext" contenteditable="true">Quantidade de compras realizadas</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
+                    <div class="kpi-value" contenteditable="true">R$ 156,59</div>
+                    <div class="kpi-subtext" contenteditable="true">Custo de anúncio por venda</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
+                    <div class="kpi-value" contenteditable="true">0.76</div>
+                    <div class="kpi-subtext" contenteditable="true">Retorno de faturamento / investimento</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Receita</div>
+                    <div class="kpi-value" contenteditable="true">R$ 119,00</div>
+                    <div class="kpi-subtext" contenteditable="true">Faturamento gerado pela conversão</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Investimento</div>
+                    <div class="kpi-value" contenteditable="true">R$ 156,59</div>
+                    <div class="kpi-subtext" contenteditable="true">Investimento total no produto</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKINCARE SECTION -->
+        <section id="skincare" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Campanha [LINHA DE SKINCARE]</h2>
+                    <p contenteditable="true">Performance da campanha de divulgação da Linha de Skincare no período</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Impressões</div>
+                    <div class="kpi-value" contenteditable="true">6.507</div>
+                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
+                    <div class="kpi-value" contenteditable="true">3.170</div>
+                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Vendas</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">Nenhuma venda registrada</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Receita</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Investimento</div>
+                    <div class="kpi-value" contenteditable="true">R$ 139,24</div>
+                    <div class="kpi-subtext" contenteditable="true">Investimento total na linha</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VITAMINA C SECTION -->
+        <section id="vitamina-c" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Campanha [PÉROLAS DE VITAMINA C]</h2>
+                    <p contenteditable="true">Performance da campanha de Pérolas de Vitamina C no período</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Impressões</div>
+                    <div class="kpi-value" contenteditable="true">3.309</div>
+                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
+                    <div class="kpi-value" contenteditable="true">1.925</div>
+                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Vendas</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">Nenhuma venda registrada</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Receita</div>
+                    <div class="kpi-value" contenteditable="true">-</div>
+                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label" contenteditable="true">Investimento</div>
+                    <div class="kpi-value" contenteditable="true">R$ 149,10</div>
+                    <div class="kpi-subtext" contenteditable="true">Investimento total na campanha</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADO GERAL SECTION (Moved after Vitamina C and before Próximos Passos) -->
+        <section id="resultado-geral" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Resultado Geral (Meta Ads)</h2>
+                    <p contenteditable="true">Resultados consolidados das campanhas de tráfego pago - Maio 2026</p>
+                </div>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">Impressões</div>
+                    <div class="kpi-value" contenteditable="true">38.932</div>
+                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                </div>
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
+                    <div class="kpi-value" contenteditable="true">26.082</div>
+                    <div class="kpi-subtext" contenteditable="true">Alcance único das campanhas</div>
+                </div>
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">Vendas</div>
+                    <div class="kpi-value" contenteditable="true">4</div>
+                    <div class="kpi-subtext" contenteditable="true">Conversões em compras realizadas</div>
+                </div>
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
+                    <div class="kpi-value" contenteditable="true">R$ 147,54</div>
+                    <div class="kpi-subtext" contenteditable="true">Custo médio por venda</div>
+                </div>
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">ROI (Retorno)</div>
+                    <div class="kpi-value" contenteditable="true">0.62</div>
+                    <div class="kpi-subtext" contenteditable="true">Retorno sobre investimento</div>
+                </div>
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">Receita</div>
+                    <div class="kpi-value" contenteditable="true">R$ 365,54</div>
+                    <div class="kpi-subtext" contenteditable="true">Receita gerada pelas vendas</div>
+                </div>
+                <div class="kpi-card" style="--accent: var(--meta-color)">
+                    <div class="kpi-label" contenteditable="true">Investimento</div>
+                    <div class="kpi-value" contenteditable="true">R$ 733,59</div>
+                    <div class="kpi-subtext" contenteditable="true">Investimento total no período</div>
+                </div>
+            </div>
+
+            <div class="strategy-container">
+                <div class="strategy-block">
+                    <h4 contenteditable="true">Objetivo</h4>
+                    <p contenteditable="true">Aumentar a receita do e-commerce.</p>
+                </div>
+                <div class="strategy-block">
+                    <h4 contenteditable="true">Estratégia Geral</h4>
+                    <p contenteditable="true">Utilizamos diversos testes de conversões, públicos e produtos para encontrar os melhores resultados em termos de ROI e escala.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROXIMOS PASSOS SECTION -->
+        <section id="proximos-passos" class="section-block">
+            <div class="dash-header">
+                <div>
+                    <h2 contenteditable="true">Diagnóstico & Próximos Passos</h2>
+                    <p contenteditable="true">Análise estratégica inicial e planejamento de otimizações</p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="card-header">
+                    <div class="card-title" contenteditable="true">Contexto Inicial (Campanhas ativas a partir de 25/05)</div>
+                </div>
+                <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.05rem;" contenteditable="true">
+                    As campanhas começaram no dia 25/05, somando apenas 7 dias de veiculação ativa no fechamento do mês.
+                </p>
+                <div class="strategy-container" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="strategy-block">
+                        <h4 contenteditable="true">🟢 Fitocomposto Calmante</h4>
+                        <p contenteditable="true">Líder em tração com 3 compras, faturamento de R$ 246,64 e ROAS positivo de 1,70. As copys focam em alívio do estresse e sono.</p>
+                    </div>
+                    <div class="strategy-block">
+                        <h4 contenteditable="true">🟡 Emagrecedor Plus</h4>
+                        <p contenteditable="true">Registrou 1 compra (conversão de R$ 119,00). Estratégia focada em queima de gordura e visuais seguros para evitar bloqueios.</p>
+                    </div>
+                    <div class="strategy-block">
+                        <h4 contenteditable="true">🔵 Tráfego - Site</h4>
+                        <p contenteditable="true">Gerou 302 visualizações de página com custo por clique baixo de R$ 0,47. Papel fundamental para atrair novos visitantes e aquecer o pixel.</p>
+                    </div>
+                    <div class="strategy-block">
+                        <h4 contenteditable="true">🚀 Próximos Passos & Otimizações</h4>
+                        <p contenteditable="true">Otimizar as campanhas baseando-se no comportamento inicial do público. Analisar possíveis escalas de orçamento nas verticais de produtos que apresentarem melhor eficiência de conversão e ROAS.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic;" contenteditable="true">
+                    * No próximo relatório, com maior tempo de atividade dos anúncios, os dados serão substancialmente mais maduros e consistentes para análises.
+                </p>
+            </div>
+        </section>
+
+        <!-- AGRADECIMENTO SECTION -->
+        <section id="agradecimento" class="section-block">
+            <div class="final-presentation-block">
+                <h1 class="thank-you-title" contenteditable="true">Obrigado pela parceria!</h1>
+                <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 300;" contenteditable="true">Relatório de Performance - Maio 2026</p>
+                
+                <div class="final-branding-card">
+                    <div class="closing-footer-layout">
+                        <img src="logo-howli.png" style="height: 45px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(124, 58, 237, 0.4));" alt="Howli Logo">
+                        <div class="footer-logo-mike" contenteditable="true">HOWLI</div>
+                        <div class="closing-divider"></div>
+                        <div style="text-align: left; font-size: 0.9rem; color: var(--text-muted);">
+                            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;" contenteditable="true">OURODERMA</strong>
+                            <span contenteditable="true">Maio 2026 | Gestão de Mídia & Performance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    // Tab / Section switching logic
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.section-block');
+
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = item.getAttribute('data-target');
+
+            // Remove active classes
+            navItems.forEach(i => i.classList.remove('active'));
+            sections.forEach(s => s.classList.remove('active'));
+
+            // Add active classes
+            item.classList.add('active');
+            const targetSection = document.getElementById(target);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Scroll main content back to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // Presentation fullscreen toggle
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    // Draggable Sidebar Nav Items logic for quick rearrangement
+    let dragSrcEl = null;
+
+    function handleDragStart(e) {
+        dragSrcEl = this;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+        e.dataTransfer.setData('data-target', this.getAttribute('data-target'));
+        this.style.opacity = '0.4';
+    }
+
+    // Drag-over handler
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        this.classList.add('drag-over');
+        e.dataTransfer.dropEffect = 'move';
+        return false;
+    }
+
+    // Drag-leave handler
+    function handleDragLeave(e) {
+        this.classList.remove('drag-over');
+    }
+
+    // Drop handler
+    function handleDrop(e) {
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+
+        if (dragSrcEl !== this) {
+            // Swap inner HTML
+            dragSrcEl.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+
+            // Swap data-target attributes
+            const targetSrc = dragSrcEl.getAttribute('data-target');
+            const targetDest = e.dataTransfer.getData('data-target');
+            dragSrcEl.setAttribute('data-target', targetDest);
+            this.setAttribute('data-target', targetSrc);
+
+            // Re-apply active class appropriately
+            const activeId = document.querySelector('.section-block.active').id;
+            navItems.forEach(item => {
+                if (item.getAttribute('data-target') === activeId) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+        return false;
+    }
+
+    // Drag-end handler
+    function handleDragEnd(e) {
+        this.style.opacity = '1';
+        navItems.forEach(item => {
+            item.classList.remove('drag-over');
+        });
+    }
+</script>
+</body>
+</html>
