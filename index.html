@@ -16,7 +16,7 @@
             --accent-rgb: 124, 58, 237;
             --meta-color: #1877F2;
             --google-color: #34a853;
-            --text-main: #f3f4f6;
+            --text-main: #f9fafb; /* Slightly brighter text */
             --text-muted: #9ca3af;
             --table-header: rgba(255, 255, 255, 0.02);
             --table-row-hover: rgba(255, 255, 255, 0.03);
@@ -34,6 +34,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            font-size: 1.1rem; /* Increased general font size */
         }
 
         /* App Layout Grid */
@@ -43,7 +44,7 @@
             min-height: 100vh;
         }
 
-        /* Sidebar Styling */
+        /* Sidebar Styling (Fixed on Desktop) */
         .sidebar {
             background-color: #050813;
             border-right: 1px solid var(--border-card);
@@ -60,33 +61,22 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            width: 100%;
         }
 
         .logo-img {
-            height: 32px;
+            height: 48px; /* Slightly larger logo */
             width: auto;
             object-fit: contain;
-        }
-
-        .logo-text {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: 0.5px;
-            background: linear-gradient(135deg, #ffffff 0%, #b39ddb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            outline: none;
-            padding: 0.25rem;
         }
 
         .nav-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .nav-item {
@@ -95,12 +85,7 @@
             width: 100%;
             border-radius: 10px;
             transition: all 0.3s ease;
-            cursor: grab;
             border: 1px solid transparent;
-        }
-        
-        .nav-item:active {
-            cursor: grabbing;
         }
 
         .nav-item a {
@@ -109,9 +94,9 @@
             gap: 0.75rem;
             color: var(--text-muted);
             text-decoration: none;
-            padding: 0.75rem 0.85rem;
+            padding: 0.8rem 0.9rem;
             width: 100%;
-            font-size: 0.925rem;
+            font-size: 1.05rem; /* Increased font size */
             font-weight: 500;
             outline: none;
         }
@@ -120,18 +105,13 @@
             color: #fff;
             background: rgba(124, 58, 237, 0.08);
             border-left: 3px solid var(--accent);
-            padding-left: calc(0.85rem - 3px);
-        }
-
-        .nav-item.drag-over {
-            border: 1px dashed var(--accent);
-            background: rgba(124, 58, 237, 0.04);
+            padding-left: calc(0.9rem - 3px);
         }
 
         .footer-branding {
             border-top: 1px solid var(--border-card);
             padding-top: 1.5rem;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
@@ -149,9 +129,9 @@
             background: rgba(124, 58, 237, 0.1);
             border: 1px solid rgba(124, 58, 237, 0.2);
             color: #b39ddb;
-            padding: 0.6rem 1rem;
+            padding: 0.7rem 1rem;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             margin-bottom: 1.5rem;
@@ -166,20 +146,12 @@
 
         /* Main Content Styling */
         .main-content {
-            padding: 3rem;
+            padding: 3.5rem;
             background-color: var(--bg-main);
             background-image: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.05) 0%, transparent 60%);
         }
 
         /* Cover Section styling */
-        .cover-section {
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-
         .cover-content {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -190,7 +162,7 @@
 
         .cover-left h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
+            font-size: 4rem; /* Increased font size */
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -1px;
@@ -207,9 +179,9 @@
             background: rgba(124, 58, 237, 0.1);
             border: 1px solid rgba(124, 58, 237, 0.2);
             color: #b39ddb;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 99px;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -227,7 +199,7 @@
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(5,8,19,0.9) 0%, rgba(124, 58, 237, 0.05) 100%);
+            background: radial-gradient(circle, rgba(5,8,19,0.9) 0%, rgba(124, 58, 237,0.05) 100%);
             border: 2px solid rgba(124, 58, 237, 0.2);
             position: relative;
             box-shadow: 0 0 50px rgba(124, 58, 237, 0.1);
@@ -262,7 +234,7 @@
 
         .dash-header h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.25rem;
+            font-size: 2.5rem; /* Increased font size */
             font-weight: 700;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #ffffff 0%, #b39ddb 100%);
@@ -273,9 +245,8 @@
 
         .dash-header p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             margin-top: 0.25rem;
-            outline: none;
         }
 
         /* Section Layouts */
@@ -298,7 +269,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-card);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -319,13 +290,12 @@
 
         .card-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.4rem; /* Increased font size */
             font-weight: 600;
             color: #fff;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            outline: none;
         }
 
         .card-title-icon {
@@ -338,7 +308,7 @@
         /* KPI Grids */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2.5rem;
         }
@@ -347,7 +317,7 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-card);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1.75rem;
             text-align: left;
             position: relative;
             overflow: hidden;
@@ -371,32 +341,29 @@
         }
 
         .kpi-label {
-            font-size: 0.725rem;
+            font-size: 0.8rem; /* Increased font size */
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            outline: none;
         }
 
         .kpi-value {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
+            font-size: 2.1rem; /* Increased font size */
             font-weight: 700;
             color: #fff;
             line-height: 1.2;
-            outline: none;
         }
 
         .kpi-subtext {
-            font-size: 0.8rem;
+            font-size: 0.9rem; /* Increased font size */
             color: var(--text-muted);
             margin-top: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.25rem;
-            outline: none;
         }
 
         /* Strategy blocks */
@@ -411,22 +378,72 @@
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border-card);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1.75rem;
         }
 
         .strategy-block h4 {
             font-family: 'Outfit', sans-serif;
             color: #b39ddb;
             margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 1.25rem; /* Increased font size */
             font-weight: 600;
-            outline: none;
         }
 
         .strategy-block p {
-            outline: none;
             color: var(--text-muted);
-            font-size: 0.925rem;
+            font-size: 1.05rem; /* Increased font size */
+        }
+
+        /* Swipe indicator warning for tables */
+        .swipe-notice {
+            display: none; /* Desktop hidden */
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px dashed rgba(124, 58, 237, 0.3);
+            color: #b39ddb;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            text-align: center;
+        }
+
+        /* Tables */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 1.05rem; /* Increased font size */
+        }
+
+        .premium-table th {
+            background: var(--table-header);
+            padding: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            border-bottom: 1px solid var(--border-card);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .premium-table td {
+            padding: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .premium-table tbody tr:hover {
+            background: var(--table-row-hover);
         }
 
         /* Final Presentation Section Styling */
@@ -442,20 +459,19 @@
 
         .thank-you-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
+            font-size: 4.5rem; /* Increased font size */
             font-weight: 800;
             background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 2rem;
-            outline: none;
         }
 
         .final-branding-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border-card);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 3rem;
             max-width: 600px;
             width: 100%;
             margin-top: 2rem;
@@ -479,13 +495,183 @@
         .footer-logo-mike {
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             color: #fff;
             letter-spacing: 2px;
-            outline: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        /* ==========================================================================
+           MOBILE RESPONSIVENESS IMPROVEMENTS (iOS & ANDROID FRIENDLY)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .app-container {
+                grid-template-columns: 1fr; /* Stack layout vertically */
+            }
+
+            /* Sticky Header on top - fixed position and non-floating */
+            .sidebar {
+                height: auto !important;
+                position: sticky !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                padding: 1.5rem 1rem 1rem 1rem !important;
+                background-color: #050813 !important; /* Premium dark background */
+                border-right: none !important;
+                border-bottom: 1px solid var(--border-card) !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 1rem !important;
+                z-index: 1000 !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+            }
+
+            .logo-area {
+                margin-bottom: 0.5rem !important;
+                justify-content: center !important;
+            }
+
+            .logo-img {
+                height: 52px; /* Logo is slightly larger */
+            }
+
+            .sidebar nav {
+                width: 100%;
+            }
+
+            /* Grid layout for buttons: 3 columns on tablet, 2 columns on small screens */
+            .nav-list {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.5rem !important;
+                width: 100% !important;
+            }
+
+            @media (max-width: 580px) {
+                .nav-list {
+                    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns on mobile */
+                }
+            }
+
+            .nav-item {
+                background: rgba(255, 255, 255, 0.03) !important;
+                border-radius: 6px;
+            }
+
+            .nav-item a {
+                padding: 0.7rem 0.5rem !important;
+                font-size: 0.85rem !important;
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 0.25rem;
+            }
+
+            .nav-item.active {
+                border-color: rgba(124, 58, 237, 0.4) !important;
+                background: rgba(124, 58, 237, 0.12) !important;
+            }
+
+            .nav-item.active a {
+                color: #fff !important;
+                border-left: none !important;
+                border-bottom: 3px solid var(--accent) !important;
+                padding-left: 0.5rem !important;
+                padding-bottom: calc(0.7rem - 3px) !important;
+            }
+
+            .sidebar div:last-child {
+                display: none; /* Hide desktop presentation buttons on mobile */
+            }
+
+            /* Content spacing under the sticky header */
+            .main-content {
+                padding: 2rem 1rem !important;
+                max-width: 100vw !important;
+                overflow-x: hidden !important;
+            }
+
+            .cover-content {
+                grid-template-columns: 1fr !important;
+                gap: 2.5rem !important;
+                text-align: center !important;
+            }
+
+            .cover-left h1 {
+                font-size: 2.8rem !important;
+            }
+
+            .cover-badge {
+                margin: 0 auto 1.5rem auto !important;
+            }
+
+            .closing-footer-layout {
+                justify-content: center !important;
+            }
+
+            .cover-right {
+                order: -1; /* Art displays first on mobile */
+            }
+
+            .cover-art {
+                width: 220px !important;
+                height: 220px !important;
+            }
+
+            .strategy-container {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            /* Responsive KPI cards: Auto-fit to display 2 or 3 per line depending on width */
+            .kpi-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+                gap: 0.85rem !important;
+            }
+
+            /* For screen widths that fit ~280px-480px, enforce 2 cards per line */
+            @media (max-width: 480px) {
+                .kpi-grid {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                }
+            }
+
+            /* For screen widths that are wider (e.g. tablets), fit 3 cards per line */
+            @media (min-width: 481px) and (max-width: 768px) {
+                .kpi-grid {
+                    grid-template-columns: repeat(3, 1fr) !important;
+                }
+            }
+
+            .kpi-card {
+                padding: 1.25rem 0.85rem !important;
+            }
+
+            .kpi-value {
+                font-size: 1.6rem !important;
+            }
+
+            .kpi-label {
+                font-size: 0.725rem !important;
+            }
+
+            /* Enforce Table Scroll indicators */
+            .swipe-notice {
+                display: flex !important;
+            }
+
+            .premium-table {
+                min-width: 650px !important; /* Ensures the table overflows and scrolls */
+                display: table !important;
+                width: max-content !important;
+            }
+
+            .premium-table th, .premium-table td {
+                font-size: 0.95rem !important;
+                padding: 0.85rem !important;
+            }
         }
     </style>
 </head>
@@ -497,20 +683,19 @@
         <div>
             <div class="logo-area">
                 <img src="logo-howli.png" class="logo-img" alt="Howli Logo">
-                <div class="logo-text" contenteditable="true">HOWLI</div>
             </div>
             
             <nav>
                 <ul class="nav-list" id="sidebarNavList">
-                    <li class="nav-item active" data-target="cover" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#cover"><span contenteditable="true">Capa do Relatório</span></a></li>
-                    <li class="nav-item" data-target="trafego-site" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#trafego-site"><span contenteditable="true">Tráfego Site</span></a></li>
-                    <li class="nav-item" data-target="fitocomposto" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#fitocomposto"><span contenteditable="true">Fitocomposto Calmante</span></a></li>
-                    <li class="nav-item" data-target="emagrecedor" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#emagrecedor"><span contenteditable="true">Emagrecedor Plus</span></a></li>
-                    <li class="nav-item" data-target="skincare" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#skincare"><span contenteditable="true">Linha de Skincare</span></a></li>
-                    <li class="nav-item" data-target="vitamina-c" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#vitamina-c"><span contenteditable="true">Pérolas Vitamina C</span></a></li>
-                    <li class="nav-item" data-target="resultado-geral" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#resultado-geral"><span contenteditable="true">Resultado Geral</span></a></li>
-                    <li class="nav-item" data-target="proximos-passos" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#proximos-passos"><span contenteditable="true">Próximos Passos</span></a></li>
-                    <li class="nav-item" data-target="agradecimento" draggable="true" ondragstart="handleDragStart(event)" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragend="handleDragEnd(event)"><a href="#agradecimento"><span contenteditable="true">Agradecimento</span></a></li>
+                    <li class="nav-item active" data-target="cover"><a href="#cover">Capa do Relatório</a></li>
+                    <li class="nav-item" data-target="trafego-site"><a href="#trafego-site">Tráfego Site</a></li>
+                    <li class="nav-item" data-target="fitocomposto"><a href="#fitocomposto">Fitocomposto Calmante</a></li>
+                    <li class="nav-item" data-target="emagrecedor"><a href="#emagrecedor">Emagrecedor Plus</a></li>
+                    <li class="nav-item" data-target="skincare"><a href="#skincare">Linha de Skincare</a></li>
+                    <li class="nav-item" data-target="vitamina-c"><a href="#vitamina-c">Pérolas Vitamina C</a></li>
+                    <li class="nav-item" data-target="resultado-geral"><a href="#resultado-geral">Resultado Geral</a></li>
+                    <li class="nav-item" data-target="proximos-passos"><a href="#proximos-passos">Próximos Passos</a></li>
+                    <li class="nav-item" data-target="agradecimento"><a href="#agradecimento">Agradecimento</a></li>
                 </ul>
             </nav>
         </div>
@@ -522,8 +707,8 @@
             </button>
             
             <div class="footer-branding">
-                <strong contenteditable="true">Maio 2026</strong>
-                <span contenteditable="true">Performance Dashboard</span>
+                <strong>Maio 2026</strong>
+                <span>Performance Dashboard</span>
             </div>
         </div>
     </aside>
@@ -533,23 +718,22 @@
         <!-- COVER SECTION -->
         <section id="cover" class="section-block active">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
-                <div class="cover-badge" contenteditable="true">🏆 Dashboard de Performance</div>
+                <div class="cover-badge">🏆 Dashboard de Performance</div>
             </div>
             
             <div class="cover-content" style="margin-top: 4rem;">
                 <div class="cover-left">
-                    <h1 contenteditable="true">Relatório de Tráfego Pago</h1>
-                    <p style="font-size: 2.2rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-weight: 700;" contenteditable="true">OuroDerma</p>
-                    <p style="font-size: 1.15rem; color: var(--text-muted); font-weight: 300; margin-bottom: 4rem;" contenteditable="true">Análise estratégica de tráfego pago e conversão e-commerce no período de Maio de 2026.</p>
+                    <h1>Relatório de Tráfego Pago</h1>
+                    <p style="font-size: 2.5rem; color: #fff; margin-bottom: 0.75rem; font-family: 'Outfit'; font-weight: 700;">OuroDerma</p>
+                    <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 300; margin-bottom: 4rem;">Análise estratégica de tráfego pago e conversão e-commerce no período de Maio de 2026.</p>
                     
                     <!-- Cover Signature Block -->
                     <div class="closing-footer-layout" style="justify-content: flex-start; margin-top: 2rem;">
-                        <img src="logo-howli.png" style="height: 35px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.3));" alt="Howli Logo">
-                        <div class="footer-logo-mike" style="margin-left: -0.5rem;" contenteditable="true">HOWLI</div>
+                        <img src="logo-howli.png" style="height: 38px; object-fit: contain; filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.3));" alt="Howli Logo">
                         <div class="closing-divider"></div>
-                        <div style="text-align: left; font-size: 0.8rem; color: var(--text-muted);">
-                            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;" contenteditable="true">OURODERMA</strong>
-                            <span contenteditable="true">Gestão de Mídia & Analytics | Maio 2026</span>
+                        <div style="text-align: left; font-size: 0.9rem; color: var(--text-muted);">
+                            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;">OURODERMA</strong>
+                            <span>Gestão de Mídia & Analytics | Maio 2026</span>
                         </div>
                     </div>
                 </div>
@@ -565,36 +749,36 @@
         <section id="trafego-site" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Campanha [TRÁFEGO SITE]</h2>
-                    <p contenteditable="true">Resultados da campanha focada em atração de visitantes qualificados</p>
+                    <h2>Campanha [TRÁFEGO SITE]</h2>
+                    <p>Resultados da campanha focada em atração de visitantes qualificados</p>
                 </div>
             </div>
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Impressões</div>
-                    <div class="kpi-value" contenteditable="true">23.181</div>
-                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                    <div class="kpi-label">Impressões</div>
+                    <div class="kpi-value">23.181</div>
+                    <div class="kpi-subtext">Visualizações dos anúncios</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
-                    <div class="kpi-value" contenteditable="true">17.741</div>
-                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                    <div class="kpi-label">Pessoas Alcançadas</div>
+                    <div class="kpi-value">17.741</div>
+                    <div class="kpi-subtext">Alcance único da campanha</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Visitas ao Site</div>
-                    <div class="kpi-value" contenteditable="true">302</div>
-                    <div class="kpi-subtext" contenteditable="true">Cliques que geraram visualização de página</div>
+                    <div class="kpi-label">Visitas ao Site</div>
+                    <div class="kpi-value">302</div>
+                    <div class="kpi-subtext">Cliques que geraram visualização de página</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Custo por Visita</div>
-                    <div class="kpi-value" contenteditable="true">R$ 0,47</div>
-                    <div class="kpi-subtext" contenteditable="true">Custo médio por visita gerada</div>
+                    <div class="kpi-label">Custo por Visita</div>
+                    <div class="kpi-value">R$ 0,47</div>
+                    <div class="kpi-subtext">Custo médio por visita gerada</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Investimento</div>
-                    <div class="kpi-value" contenteditable="true">R$ 143,42</div>
-                    <div class="kpi-subtext" contenteditable="true">Investimento total na campanha</div>
+                    <div class="kpi-label">Investimento</div>
+                    <div class="kpi-value">R$ 143,42</div>
+                    <div class="kpi-subtext">Investimento total na campanha</div>
                 </div>
             </div>
         </section>
@@ -603,46 +787,46 @@
         <section id="fitocomposto" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Campanha [FITOCOMPOSTO CALMANTE]</h2>
-                    <p contenteditable="true">Performance do produto Fitocomposto Calmante no período</p>
+                    <h2>Campanha [FITOCOMPOSTO CALMANTE]</h2>
+                    <p>Performance do produto Fitocomposto Calmante no período</p>
                 </div>
             </div>
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Impressões</div>
-                    <div class="kpi-value" contenteditable="true">2.894</div>
-                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                    <div class="kpi-label">Impressões</div>
+                    <div class="kpi-value">2.894</div>
+                    <div class="kpi-subtext">Visualizações dos anúncios</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
-                    <div class="kpi-value" contenteditable="true">2.185</div>
-                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                    <div class="kpi-label">Pessoas Alcançadas</div>
+                    <div class="kpi-value">2.185</div>
+                    <div class="kpi-subtext">Alcance único da campanha</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Vendas</div>
-                    <div class="kpi-value" contenteditable="true">3</div>
-                    <div class="kpi-subtext" contenteditable="true">Quantidade de compras realizadas</div>
+                    <div class="kpi-label">Vendas</div>
+                    <div class="kpi-value">3</div>
+                    <div class="kpi-subtext">Quantidade de compras realizadas</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
-                    <div class="kpi-value" contenteditable="true">R$ 48,41</div>
-                    <div class="kpi-subtext" contenteditable="true">Custo de anúncio por venda</div>
+                    <div class="kpi-label">Custo por Venda</div>
+                    <div class="kpi-value">R$ 48,41</div>
+                    <div class="kpi-subtext">Custo de anúncio por venda</div>
                 </div>
                 <div class="kpi-card" style="--accent: #2e7d32">
-                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
-                    <div class="kpi-value" contenteditable="true">1.70</div>
-                    <div class="kpi-subtext" contenteditable="true">Retorno de faturamento / investimento</div>
+                    <div class="kpi-label">ROI (ROAS)</div>
+                    <div class="kpi-value">1.70</div>
+                    <div class="kpi-subtext">Retorno de faturamento / investimento</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Receita</div>
-                    <div class="kpi-value" contenteditable="true">R$ 246,64</div>
-                    <div class="kpi-subtext" contenteditable="true">Faturamento gerado pela conversão</div>
+                    <div class="kpi-label">Receita</div>
+                    <div class="kpi-value">R$ 246,64</div>
+                    <div class="kpi-subtext">Faturamento gerado pela conversão</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Investimento</div>
-                    <div class="kpi-value" contenteditable="true">R$ 145,24</div>
-                    <div class="kpi-subtext" contenteditable="true">Investimento total no produto</div>
+                    <div class="kpi-label">Investimento</div>
+                    <div class="kpi-value">R$ 145,24</div>
+                    <div class="kpi-subtext">Investimento total no produto</div>
                 </div>
             </div>
         </section>
@@ -651,46 +835,46 @@
         <section id="emagrecedor" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Campanha [EMAGRECEDOR PLUS]</h2>
-                    <p contenteditable="true">Performance do produto Emagrecedor Plus no período</p>
+                    <h2>Campanha [EMAGRECEDOR PLUS]</h2>
+                    <p>Performance do produto Emagrecedor Plus no período</p>
                 </div>
             </div>
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Impressões</div>
-                    <div class="kpi-value" contenteditable="true">3.041</div>
-                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                    <div class="kpi-label">Impressões</div>
+                    <div class="kpi-value">3.041</div>
+                    <div class="kpi-subtext">Visualizações dos anúncios</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
-                    <div class="kpi-value" contenteditable="true">2.127</div>
-                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                    <div class="kpi-label">Pessoas Alcançadas</div>
+                    <div class="kpi-value">2.127</div>
+                    <div class="kpi-subtext">Alcance único da campanha</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Vendas</div>
-                    <div class="kpi-value" contenteditable="true">1</div>
-                    <div class="kpi-subtext" contenteditable="true">Quantidade de compras realizadas</div>
+                    <div class="kpi-label">Vendas</div>
+                    <div class="kpi-value">1</div>
+                    <div class="kpi-subtext">Quantidade de compras realizadas</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
-                    <div class="kpi-value" contenteditable="true">R$ 156,59</div>
-                    <div class="kpi-subtext" contenteditable="true">Custo de anúncio por venda</div>
+                    <div class="kpi-label">Custo por Venda</div>
+                    <div class="kpi-value">R$ 156,59</div>
+                    <div class="kpi-subtext">Custo de anúncio por venda</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
-                    <div class="kpi-value" contenteditable="true">0.76</div>
-                    <div class="kpi-subtext" contenteditable="true">Retorno de faturamento / investimento</div>
+                    <div class="kpi-label">ROI (ROAS)</div>
+                    <div class="kpi-value">0.76</div>
+                    <div class="kpi-subtext">Retorno de faturamento / investimento</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Receita</div>
-                    <div class="kpi-value" contenteditable="true">R$ 119,00</div>
-                    <div class="kpi-subtext" contenteditable="true">Faturamento gerado pela conversão</div>
+                    <div class="kpi-label">Receita</div>
+                    <div class="kpi-value">R$ 119,00</div>
+                    <div class="kpi-subtext">Faturamento gerado pela conversão</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Investimento</div>
-                    <div class="kpi-value" contenteditable="true">R$ 156,59</div>
-                    <div class="kpi-subtext" contenteditable="true">Investimento total no produto</div>
+                    <div class="kpi-label">Investimento</div>
+                    <div class="kpi-value">R$ 156,59</div>
+                    <div class="kpi-subtext">Investimento total no produto</div>
                 </div>
             </div>
         </section>
@@ -699,46 +883,46 @@
         <section id="skincare" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Campanha [LINHA DE SKINCARE]</h2>
-                    <p contenteditable="true">Performance da campanha de divulgação da Linha de Skincare no período</p>
+                    <h2>Campanha [LINHA DE SKINCARE]</h2>
+                    <p>Performance da campanha de divulgação da Linha de Skincare no período</p>
                 </div>
             </div>
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Impressões</div>
-                    <div class="kpi-value" contenteditable="true">6.507</div>
-                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                    <div class="kpi-label">Impressões</div>
+                    <div class="kpi-value">6.507</div>
+                    <div class="kpi-subtext">Visualizações dos anúncios</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
-                    <div class="kpi-value" contenteditable="true">3.170</div>
-                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                    <div class="kpi-label">Pessoas Alcançadas</div>
+                    <div class="kpi-value">3.170</div>
+                    <div class="kpi-subtext">Alcance único da campanha</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Vendas</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">Nenhuma venda registrada</div>
+                    <div class="kpi-label">Vendas</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">Nenhuma venda registrada</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                    <div class="kpi-label">Custo por Venda</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">N/A</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                    <div class="kpi-label">ROI (ROAS)</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">N/A</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Receita</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                    <div class="kpi-label">Receita</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">N/A</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Investimento</div>
-                    <div class="kpi-value" contenteditable="true">R$ 139,24</div>
-                    <div class="kpi-subtext" contenteditable="true">Investimento total na linha</div>
+                    <div class="kpi-label">Investimento</div>
+                    <div class="kpi-value">R$ 139,24</div>
+                    <div class="kpi-subtext">Investimento total na linha</div>
                 </div>
             </div>
         </section>
@@ -747,105 +931,194 @@
         <section id="vitamina-c" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Campanha [PÉROLAS DE VITAMINA C]</h2>
-                    <p contenteditable="true">Performance da campanha de Pérolas de Vitamina C no período</p>
+                    <h2>Campanha [PÉROLAS DE VITAMINA C]</h2>
+                    <p>Performance da campanha de Pérolas de Vitamina C no período</p>
                 </div>
             </div>
 
             <div class="kpi-grid">
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Impressões</div>
-                    <div class="kpi-value" contenteditable="true">3.309</div>
-                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                    <div class="kpi-label">Impressões</div>
+                    <div class="kpi-value">3.309</div>
+                    <div class="kpi-subtext">Visualizações dos anúncios</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
-                    <div class="kpi-value" contenteditable="true">1.925</div>
-                    <div class="kpi-subtext" contenteditable="true">Alcance único da campanha</div>
+                    <div class="kpi-label">Pessoas Alcançadas</div>
+                    <div class="kpi-value">1.925</div>
+                    <div class="kpi-subtext">Alcance único da campanha</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Vendas</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">Nenhuma venda registrada</div>
+                    <div class="kpi-label">Vendas</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">Nenhuma venda registrada</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                    <div class="kpi-label">Custo por Venda</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">N/A</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">ROI (ROAS)</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                    <div class="kpi-label">ROI (ROAS)</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">N/A</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Receita</div>
-                    <div class="kpi-value" contenteditable="true">-</div>
-                    <div class="kpi-subtext" contenteditable="true">N/A</div>
+                    <div class="kpi-label">Receita</div>
+                    <div class="kpi-value">-</div>
+                    <div class="kpi-subtext">N/A</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label" contenteditable="true">Investimento</div>
-                    <div class="kpi-value" contenteditable="true">R$ 149,10</div>
-                    <div class="kpi-subtext" contenteditable="true">Investimento total na campanha</div>
+                    <div class="kpi-label">Investimento</div>
+                    <div class="kpi-value">R$ 149,10</div>
+                    <div class="kpi-subtext">Investimento total na campanha</div>
                 </div>
             </div>
         </section>
 
-        <!-- RESULTADO GERAL SECTION (Moved after Vitamina C and before Próximos Passos) -->
+        <!-- RESULTADO GERAL SECTION -->
         <section id="resultado-geral" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Resultado Geral (Meta Ads)</h2>
-                    <p contenteditable="true">Resultados consolidados das campanhas de tráfego pago - Maio 2026</p>
+                    <h2>Resultado Geral (Meta Ads)</h2>
+                    <p>Resultados consolidados das campanhas de tráfego pago - Maio 2026</p>
                 </div>
             </div>
 
             <div class="kpi-grid">
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">Impressões</div>
-                    <div class="kpi-value" contenteditable="true">38.932</div>
-                    <div class="kpi-subtext" contenteditable="true">Visualizações dos anúncios</div>
+                    <div class="kpi-label">Impressões</div>
+                    <div class="kpi-value">38.932</div>
+                    <div class="kpi-subtext">Visualizações dos anúncios</div>
                 </div>
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">Pessoas Alcançadas</div>
-                    <div class="kpi-value" contenteditable="true">26.082</div>
-                    <div class="kpi-subtext" contenteditable="true">Alcance único das campanhas</div>
+                    <div class="kpi-label">Pessoas Alcançadas</div>
+                    <div class="kpi-value">26.082</div>
+                    <div class="kpi-subtext">Alcance único das campanhas</div>
                 </div>
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">Vendas</div>
-                    <div class="kpi-value" contenteditable="true">4</div>
-                    <div class="kpi-subtext" contenteditable="true">Conversões em compras realizadas</div>
+                    <div class="kpi-label">Vendas</div>
+                    <div class="kpi-value">4</div>
+                    <div class="kpi-subtext">Conversões em compras realizadas</div>
                 </div>
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">Custo por Venda</div>
-                    <div class="kpi-value" contenteditable="true">R$ 147,54</div>
-                    <div class="kpi-subtext" contenteditable="true">Custo médio por venda</div>
+                    <div class="kpi-label">Custo por Venda</div>
+                    <div class="kpi-value">R$ 147,54</div>
+                    <div class="kpi-subtext">Custo médio por venda</div>
                 </div>
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">ROI (Retorno)</div>
-                    <div class="kpi-value" contenteditable="true">0.62</div>
-                    <div class="kpi-subtext" contenteditable="true">Retorno sobre investimento</div>
+                    <div class="kpi-label">ROI (Retorno)</div>
+                    <div class="kpi-value">0.62</div>
+                    <div class="kpi-subtext">Retorno sobre investimento</div>
                 </div>
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">Receita</div>
-                    <div class="kpi-value" contenteditable="true">R$ 365,54</div>
-                    <div class="kpi-subtext" contenteditable="true">Receita gerada pelas vendas</div>
+                    <div class="kpi-label">Receita</div>
+                    <div class="kpi-value">R$ 365,54</div>
+                    <div class="kpi-subtext">Receita gerada pelas vendas</div>
                 </div>
                 <div class="kpi-card" style="--accent: var(--meta-color)">
-                    <div class="kpi-label" contenteditable="true">Investimento</div>
-                    <div class="kpi-value" contenteditable="true">R$ 733,59</div>
-                    <div class="kpi-subtext" contenteditable="true">Investimento total no período</div>
+                    <div class="kpi-label">Investimento</div>
+                    <div class="kpi-value">R$ 733,59</div>
+                    <div class="kpi-subtext">Investimento total no período</div>
                 </div>
             </div>
 
             <div class="strategy-container">
                 <div class="strategy-block">
-                    <h4 contenteditable="true">Objetivo</h4>
-                    <p contenteditable="true">Aumentar a receita do e-commerce.</p>
+                    <h4>Objetivo</h4>
+                    <p>Aumentar a receita do e-commerce.</p>
                 </div>
                 <div class="strategy-block">
-                    <h4 contenteditable="true">Estratégia Geral</h4>
-                    <p contenteditable="true">Utilizamos diversos testes de conversões, públicos e produtos para encontrar os melhores resultados em termos de ROI e escala.</p>
+                    <h4>Estratégia Geral</h4>
+                    <p>Utilizamos diversos testes de conversões, públicos e produtos para encontrar os melhores resultados em termos de ROI e escala.</p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon" style="background: var(--meta-color)"></div>
+                        Comparativo de Performance Consolidada (Maio 2026)
+                    </div>
+                </div>
+                
+                <div class="swipe-notice">↔ Deslize a tabela para o lado para ver mais</div>
+                <div class="table-container">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Campanha / Vertical</th>
+                                <th>Impressões</th>
+                                <th>Pessoas Alcançadas</th>
+                                <th>Vendas / Visitas</th>
+                                <th>Custo por Conversão</th>
+                                <th>ROI / ROAS</th>
+                                <th>Receita</th>
+                                <th>Investimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>[TRÁFEGO SITE]</td>
+                                <td>23.181</td>
+                                <td>17.741</td>
+                                <td>302 visitas</td>
+                                <td>R$ 0,47 / visita</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>R$ 143,42</td>
+                            </tr>
+                            <tr>
+                                <td>[FITOCOMPOSTO CALMANTE]</td>
+                                <td>2.894</td>
+                                <td>2.185</td>
+                                <td>3 vendas</td>
+                                <td>R$ 48,41 / venda</td>
+                                <td>1.70</td>
+                                <td>R$ 246,64</td>
+                                <td>R$ 145,24</td>
+                            </tr>
+                            <tr>
+                                <td>[EMAGRECEDOR PLUS]</td>
+                                <td>3.041</td>
+                                <td>2.127</td>
+                                <td>1 venda</td>
+                                <td>R$ 156,59 / venda</td>
+                                <td>0.76</td>
+                                <td>R$ 119,00</td>
+                                <td>R$ 156,59</td>
+                            </tr>
+                            <tr>
+                                <td>[LINHA DE SKINCARE]</td>
+                                <td>6.507</td>
+                                <td>3.170</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>R$ 139,24</td>
+                            </tr>
+                            <tr>
+                                <td>[PÉROLAS DE VITAMINA C]</td>
+                                <td>3.309</td>
+                                <td>1.925</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>R$ 149,10</td>
+                            </tr>
+                            <tr style="background: rgba(124, 58, 237, 0.08); font-weight: bold;">
+                                <td>TOTAL GERAL (Meta Ads)</td>
+                                <td>38.932</td>
+                                <td>26.082</td>
+                                <td>4 vendas</td>
+                                <td>R$ 147,54 / venda</td>
+                                <td>0.62</td>
+                                <td>R$ 365,54</td>
+                                <td>R$ 733,59</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -854,37 +1127,37 @@
         <section id="proximos-passos" class="section-block">
             <div class="dash-header">
                 <div>
-                    <h2 contenteditable="true">Diagnóstico & Próximos Passos</h2>
-                    <p contenteditable="true">Análise estratégica inicial e planejamento de otimizações</p>
+                    <h2>Diagnóstico & Próximos Passos</h2>
+                    <p>Análise estratégica inicial e planejamento de otimizações</p>
                 </div>
             </div>
 
             <div class="glass-card">
                 <div class="card-header">
-                    <div class="card-title" contenteditable="true">Contexto Inicial (Campanhas ativas a partir de 25/05)</div>
+                    <div class="card-title">Contexto Inicial (Campanhas ativas a partir de 25/05)</div>
                 </div>
-                <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.05rem;" contenteditable="true">
+                <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.15rem;">
                     As campanhas começaram no dia 25/05, somando apenas 7 dias de veiculação ativa no fechamento do mês.
                 </p>
                 <div class="strategy-container" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                     <div class="strategy-block">
-                        <h4 contenteditable="true">🟢 Fitocomposto Calmante</h4>
-                        <p contenteditable="true">Líder em tração com 3 compras, faturamento de R$ 246,64 e ROAS positivo de 1,70. As copys focam em alívio do estresse e sono.</p>
+                        <h4>🟢 Fitocomposto Calmante</h4>
+                        <p>Líder em tração com 3 compras, faturamento de R$ 246,64 e ROAS positivo de 1,70. As copys focam em alívio do estresse e sono.</p>
                     </div>
                     <div class="strategy-block">
-                        <h4 contenteditable="true">🟡 Emagrecedor Plus</h4>
-                        <p contenteditable="true">Registrou 1 compra (conversão de R$ 119,00). Estratégia focada em queima de gordura e visuais seguros para evitar bloqueios.</p>
+                        <h4>🟡 Emagrecedor Plus</h4>
+                        <p>Registrou 1 compra (conversão de R$ 119,00). Estratégia focada em queima de gordura e visuais seguros para evitar bloqueios.</p>
                     </div>
                     <div class="strategy-block">
-                        <h4 contenteditable="true">🔵 Tráfego - Site</h4>
-                        <p contenteditable="true">Gerou 302 visualizações de página com custo por clique baixo de R$ 0,47. Papel fundamental para atrair novos visitantes e aquecer o pixel.</p>
+                        <h4>🔵 Tráfego - Site</h4>
+                        <p>Gerou 302 visualizações de página com custo por clique baixo de R$ 0,47. Papel fundamental para atrair novos visitantes e aquecer o pixel.</p>
                     </div>
                     <div class="strategy-block">
-                        <h4 contenteditable="true">🚀 Próximos Passos & Otimizações</h4>
-                        <p contenteditable="true">Otimizar as campanhas baseando-se no comportamento inicial do público. Analisar possíveis escalas de orçamento nas verticais de produtos que apresentarem melhor eficiência de conversão e ROAS.</p>
+                        <h4>🚀 Próximos Passos & Otimizações</h4>
+                        <p>Otimizar as campanhas baseando-se no comportamento inicial do público. Analisar possíveis escalas de orçamento nas verticais de produtos que apresentarem melhor eficiência de conversão e ROAS.</p>
                     </div>
                 </div>
-                <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic;" contenteditable="true">
+                <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 1rem; font-style: italic;">
                     * No próximo relatório, com maior tempo de atividade dos anúncios, os dados serão substancialmente mais maduros e consistentes para análises.
                 </p>
             </div>
@@ -893,17 +1166,16 @@
         <!-- AGRADECIMENTO SECTION -->
         <section id="agradecimento" class="section-block">
             <div class="final-presentation-block">
-                <h1 class="thank-you-title" contenteditable="true">Obrigado pela parceria!</h1>
-                <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 300;" contenteditable="true">Relatório de Performance - Maio 2026</p>
+                <h1 class="thank-you-title">Obrigado pela parceria!</h1>
+                <p style="font-size: 1.35rem; color: var(--text-muted); font-weight: 300;">Relatório de Performance - Maio 2026</p>
                 
                 <div class="final-branding-card">
                     <div class="closing-footer-layout">
                         <img src="logo-howli.png" style="height: 45px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(124, 58, 237, 0.4));" alt="Howli Logo">
-                        <div class="footer-logo-mike" contenteditable="true">HOWLI</div>
                         <div class="closing-divider"></div>
-                        <div style="text-align: left; font-size: 0.9rem; color: var(--text-muted);">
-                            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;" contenteditable="true">OURODERMA</strong>
-                            <span contenteditable="true">Maio 2026 | Gestão de Mídia & Performance</span>
+                        <div style="text-align: left; font-size: 1rem; color: var(--text-muted);">
+                            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;">OURODERMA</strong>
+                            <span>Maio 2026 | Gestão de Mídia & Performance</span>
                         </div>
                     </div>
                 </div>
@@ -947,70 +1219,6 @@
         } else {
             document.exitFullscreen();
         }
-    }
-
-    // Draggable Sidebar Nav Items logic for quick rearrangement
-    let dragSrcEl = null;
-
-    function handleDragStart(e) {
-        dragSrcEl = this;
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
-        e.dataTransfer.setData('data-target', this.getAttribute('data-target'));
-        this.style.opacity = '0.4';
-    }
-
-    // Drag-over handler
-    function handleDragOver(e) {
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
-        this.classList.add('drag-over');
-        e.dataTransfer.dropEffect = 'move';
-        return false;
-    }
-
-    // Drag-leave handler
-    function handleDragLeave(e) {
-        this.classList.remove('drag-over');
-    }
-
-    // Drop handler
-    function handleDrop(e) {
-        if (e.stopPropagation) {
-            e.stopPropagation();
-        }
-
-        if (dragSrcEl !== this) {
-            // Swap inner HTML
-            dragSrcEl.innerHTML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
-
-            // Swap data-target attributes
-            const targetSrc = dragSrcEl.getAttribute('data-target');
-            const targetDest = e.dataTransfer.getData('data-target');
-            dragSrcEl.setAttribute('data-target', targetDest);
-            this.setAttribute('data-target', targetSrc);
-
-            // Re-apply active class appropriately
-            const activeId = document.querySelector('.section-block.active').id;
-            navItems.forEach(item => {
-                if (item.getAttribute('data-target') === activeId) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
-        return false;
-    }
-
-    // Drag-end handler
-    function handleDragEnd(e) {
-        this.style.opacity = '1';
-        navItems.forEach(item => {
-            item.classList.remove('drag-over');
-        });
     }
 </script>
 </body>
